@@ -33,6 +33,7 @@ class LoginController extends Controller
         ];
         User::create($dataStore);
         echo "Data berhasil di simpan";
+        return redirect('/');
     }
 
     public function ceklogin(Request $request){
