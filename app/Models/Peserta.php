@@ -21,6 +21,6 @@ class Peserta extends Model
 
     //relasi ke tabel sekolah
     public function sekolah(){
-        return $this->belongsTo(Sekolah::class, 'sekolah_id', 'id');
+        return $this->belongsTo(Sekolah::class);
     }
 }

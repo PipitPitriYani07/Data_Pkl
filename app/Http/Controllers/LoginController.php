@@ -32,8 +32,8 @@ class LoginController extends Controller
         'password'      => Hash::make($request->password)
         ];
         User::create($dataStore);
-        echo "Data berhasil di simpan";
-        return redirect('/');
+        echo "Data berhasil disimpan";
+        return redirect('/login');
     }
 
     public function ceklogin(Request $request){
@@ -42,5 +42,15 @@ class LoginController extends Controller
         } else {
         echo "Login Tidak Berhasil";
         }
+    }
+
+    public function home(Request $request){
+        return view ('home');
+    }
+
+    public function logout(Request $request){
+        $request->session()->invalidate();
+        $request->session()->regenerate();
+        return redirect('/');
     }
 }
