@@ -31,6 +31,31 @@ class SekolahController extends Controller
     return redirect('/indexsekolah');
     }
 
+    public function edit(Request $request, $id){
+        $data = [
+            'sekolah'   => Sekolah::where('id', $id)->first()
+        ];
+        return view('sekolah.editsekolah', $data);
+    }
+
+    public function ubah(Request $request, $id){
+        $request->validate([
+            'namasekolah'       => 'required',
+            'alamatsekolah'     => 'required',
+            'namaperwakilan'    => 'required'
+
+    ]);
+    $dataStore = [
+        'namasekolah'           => $request->namasekolah,
+        'alamatsekolah'         => $request->alamatsekolah,
+        'namaperwakilan'        => $request->namaperwakilan
+
+    ];
+    Sekolah::where('id', $id)->update($dataStore);
+    return redirect('/indexsekolah');
+
+    }
+
     public function hapus(Request $request, $id){
         Sekolah::where('id', $id)->delete();
         return redirect('/indexsekolah');

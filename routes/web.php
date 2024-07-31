@@ -16,6 +16,8 @@ use App\Http\Controllers\SekolahController;
 |
 */
 
+
+
 Route::get('/', [LoginController::class, 'home']);
 
 Route::get('/login', [LoginController::class, 'loginpage']);
@@ -26,10 +28,16 @@ Route::post('/cekregister', [LoginController:: class, 'registered']);
 
 Route::get('/indexpeserta', [PesertaController::class, 'indexpeserta']);
 Route::post('/daftarpeserta', [PesertaController::class, 'daftarpeserta']);
+Route::get('/peserta/edit/{id}', [PesertaController::class, 'edit']);
+Route::post('/ubahpeserta/{id}', [PesertaController::class, 'ubah']);
 Route::get('/hapuspeserta/{id}',[PesertaController::class, 'hapus']);
 
 Route::get('/indexsekolah', [SekolahController::class, 'indexsekolah']);
 Route::post('/daftarsekolah', [SekolahController::class, 'daftarsekolah']);
+Route::get('/sekolah/edit/{id}', [SekolahController::class, 'edit']);
+Route::post('/ubahsekolah/{id}', [SekolahController::class, 'ubah']);
 Route::get('/hapussekolah/{id}',[SekolahController::class, 'hapus']);
 
 Route::get('/logout', [LoginController:: class, 'logout']);
+
+
